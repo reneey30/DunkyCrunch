@@ -1,6 +1,6 @@
 import React from "react";
 
-function NavMain() {
+function MainForm() {
     return (
         <div>
             <h2>Component example</h2>
@@ -8,4 +8,4 @@ function NavMain() {
     );
 };
 
-export default NavMain;
+export default MainForm;

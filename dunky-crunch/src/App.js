@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import './App.css';
+import NavMain from "./routes/components/navmain";
+import MainForm from "./routes/components/mainform";
 
 
 
@@ -16,6 +18,8 @@ function App() {
         <Link to="/search">Search</Link>
       </nav>
       <h1>Landing Page</h1>
+      <NavMain />
+      <MainForm />
     </div>
   );
 }
