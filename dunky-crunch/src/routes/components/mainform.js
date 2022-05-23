@@ -32,8 +32,8 @@ function FormIngredient({ addIngredient, getRecipes }) {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <Form.Group class="row">
-          <div class="input-group mb-3">
+        <Form.Group className="d-flex justify-content-center mb-2">
+
             <Form.Control
               type="text"
               className="input"
@@ -41,10 +41,10 @@ function FormIngredient({ addIngredient, getRecipes }) {
               onChange={(e) => setValue(e.target.value)}
               placeholder="Add new ingredients"
             />
-            <Button class="btn btn-dark" type="submit" id="add-ingredient">
+            <Button className="btn btn-dark" type="submit" id="add-ingredient">
               Add Ingredient
             </Button>
-          </div>
+        
         </Form.Group>
       </Form>
 
