@@ -6,19 +6,20 @@ import MainForm from "./components/mainform";
 
 function Landing() {
     return (
-      <div className="app">
-        <nav
-          style={{
-            borderBottom: "solid 1px",
-            paddingBottom: "1rem",
-          }}
-        >
-          <Link to="/ingredients">Ingredients</Link> |{" "}
-          <Link to="/search">Search</Link>
-        </nav>
-        <h1>Landing Page</h1>
-        <NavMain />
-        <MainForm />
+      <div className="container">
+        <div className="app">
+          <nav
+            style={{
+              borderBottom: "solid 1px",
+              paddingBottom: "1rem",
+            }}
+          >
+            <Link to="/ingredients">Ingredients</Link> |{" "}
+            <Link to="/search">Search</Link>
+          </nav>
+          <NavMain />
+          <MainForm />
+        </div>
       </div>
     );
   }

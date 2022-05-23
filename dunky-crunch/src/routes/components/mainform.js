@@ -1,85 +1,102 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Todo({ todo, index, removeTodo }) {
-    return (
-      <div
-        className="todo"
-        
-      >
-        <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo}</span>
-        <div>
-          <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
-        </div>
+function Ingredient({ ingredient, index, removeIngredient }) {
+  return (
+    <div className="ingredient">
+      <span>{ingredient}</span>
+      <div>
+        <Button
+          variant="outline-danger"
+          onClick={() => removeIngredient(index)}
+        >
+          ✕
+        </Button>
       </div>
-    );
-  }
-  
-  function FormTodo({ addTodo }) {
-    const [value, setValue] = useState("");
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      if (!value) return;
-      addTodo(value);
-      setValue("");
-    };
-  
-    return (
-      <Form onSubmit={handleSubmit}> 
-      <Form.Group>
-        <Form.Label><b>Add Todo</b></Form.Label>
-        <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new todo" />
-      </Form.Group>
-      <Button variant="primary mb-3" type="submit">
+    </div>
+  );
+}
+
+function FormIngredient({ addIngredient, getRecipes }) {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!value) return;
+    addIngredient(value);
+    setValue("");
+  };
+
+  return (
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group class="row">
+          <div class="input-group mb-3">
+            <Form.Control
+              type="text"
+              className="input"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder="Add new ingredients"
+            />
+            <Button class="btn btn-dark" type="submit" id="add-ingredient">
+              Add Ingredient
+            </Button>
+          </div>
+        </Form.Group>
+      </Form>
+
+      <Button variant="primary mb-3" onClick={() => getRecipes()}>
         Submit
       </Button>
-    </Form>
-    );
-  }
-  
- 
+    </>
+  );
+}
 
 function MainForm() {
-    const [todos, setTodos] = useState([]);
-  
-    const addTodo = text => {
-      const newTodos = [...todos, text];
-      setTodos(newTodos);
-      console.log(todos);
-    };
-  
-    const removeTodo = index => {
-      const newTodos = [...todos];
-      newTodos.splice(index, 1);
-      setTodos(newTodos);
-    };
+  const [ingredients, setIngredients] = useState([]);
 
+  const addIngredient = (text) => {
+    const newIngredients = [...ingredients, text];
+    setIngredients(newIngredients);
+    console.log(newIngredients);
+  };
 
-    return (
-        <>
-            <div className="container">
-                <h1 className="text-center mb-4">Todo List</h1>
-                <FormTodo addTodo={addTodo} />
-                <div>
-                {todos.map((todo, index) => (
-                    <Card>
-                    <Card.Body>
-                        <Todo
-                        key={index}
-                        index={index}
-                        todo={todo}
-                        removeTodo={removeTodo}
-                        />
-                    </Card.Body>
-                    </Card>
-                ))}
-                </div>
-            </div>
-        </>
-    );
-};
+  const removeIngredient = (index) => {
+    const newIngredients = [...ingredients];
+    newIngredients.splice(index, 1);
+    setIngredients(newIngredients);
+  };
+
+  const getRecipes = () => {
+    console.log("to do:  get recipes from api");
+  }
+
+  return (
+    <>
+      <div className="mainform">
+        <h1 className="text-center mb-4">Ingredients</h1>
+
+        <div className="mb-4">
+          {ingredients.map((ingredient, index) => (
+            <Card>
+              <Card.Body>
+                <Ingredient
+                  key={index}
+                  index={index}
+                  ingredient={ingredient}
+                  removeIngredient={removeIngredient}
+                />
+              </Card.Body>
+            </Card>
+          ))}
+        </div>
+        <FormIngredient addIngredient={addIngredient} getRecipes={getRecipes}/>
+      </div>
+    </>
+  );
+}
 
 export default MainForm;

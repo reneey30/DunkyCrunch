@@ -1,11 +1,24 @@
 .app {
   padding: 30px;
-  background-color: floralwhite;
 }
 
-.todo {
+.container {
+  background-color: floralwhite;
+  background-image: url("./../public/food.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.ingredient {
   align-items: center;
   display: flex;
   font-size: 18px;
   justify-content: space-between;
+}
+
+.mainform {
+  background-color: whitesmoke;
+  padding: 8px;
 }
