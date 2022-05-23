@@ -83,7 +83,7 @@ function MainForm() {
     let query1 = `${ENDPOINT}findByIngredients`; 
 
     // let j = 0;
-    let allIngredients = ingredients.join(joiner);
+    let allIngredients = localIngredients.join(joiner);
 
     // console.log(localIngredients);
 
@@ -101,58 +101,60 @@ function MainForm() {
 
     let ingredientQuery = `${query1}?ingredients=${ingredientString}&apiKey=${API_KEY}`;
 
+    console.log(ingredientQuery);
 
-    // fetch recipes
-    fetch(ingredientQuery)
-    .then(res => res.json())
-    .then(recipes => {
-        // work with data returned from API in this block
-        console.log(recipes);
-        //cards container
-        // let cards = document.getElementById("cards-container").getElementsByClassName("recipe");
+
+    // // fetch recipes
+    // fetch(ingredientQuery)
+    // .then(res => res.json())
+    // .then(recipes => {
+    //     // work with data returned from API in this block
+    //     console.log(recipes);
+    //     //cards container
+    //     // let cards = document.getElementById("cards-container").getElementsByClassName("recipe");
  
-        let i = 0;
+    //     // let i = 0;
 
-        // let tempRecipesId = []
+    //     // let tempRecipesId = []
 
-        for (let recipe of recipes){
+    //     for (let recipe of recipes){
 
-          console.log(recipe);
-            // working on each individual recipe card
+    //       console.log(recipe);
+    //         // working on each individual recipe card
 
-            // tempRecipesId.push(recipe.id);
+    //         // tempRecipesId.push(recipe.id);
             
-            // title: recipe.title
-            // image: recipe.image
-            // ingredients: 1. ingredients not requested(missing) recipe.missedIngredients - loop thru => recipe.missedIngredients[n].name
-            //ingredients: 2. ingredients requested(in request by user) recipe.usedIngredients - loop thru => recipe.usedIngredients[n].name
-            //instructions: recipe.id will be used to get {RecipeID} to use in query 2
-            // 
+    //         // title: recipe.title
+    //         // image: recipe.image
+    //         // ingredients: 1. ingredients not requested(missing) recipe.missedIngredients - loop thru => recipe.missedIngredients[n].name
+    //         //ingredients: 2. ingredients requested(in request by user) recipe.usedIngredients - loop thru => recipe.usedIngredients[n].name
+    //         //instructions: recipe.id will be used to get {RecipeID} to use in query 2
+    //         // 
 
-            // cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
-            // cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
+    //         // cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
+    //         // cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
 
-            // let listContainer = cards[i].getElementsByClassName("list-group")[0];
+    //         // let listContainer = cards[i].getElementsByClassName("list-group")[0];
 
-            // loop one - add ingredients requested to ul
+    //         // loop one - add ingredients requested to ul
  
-            // for (let usedIngredient of recipe.usedIngredients) {
+    //         // for (let usedIngredient of recipe.usedIngredients) {
 
-            //     addList("<strong>" + usedIngredient.name + "</strong>", listContainer);
-            // }           
+    //         //     addList("<strong>" + usedIngredient.name + "</strong>", listContainer);
+    //         // }           
 
-            // loop two - add ingredients not requested to ul
+    //         // loop two - add ingredients not requested to ul
 
-            // for (let missedIngredient of recipe.missedIngredients) {
+    //         // for (let missedIngredient of recipe.missedIngredients) {
 
-            //     addList(missedIngredient.name, listContainer);
-            // }
+    //         //     addList(missedIngredient.name, listContainer);
+    //         // }
 
-            i++;     
-        }
+    //         // i++;     
+    //     }
 
-        // return tempRecipesId;
-    })
+    //     // return tempRecipesId;
+    // })
   };
 
   return (
