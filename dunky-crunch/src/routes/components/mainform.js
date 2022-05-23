@@ -71,8 +71,89 @@ function MainForm() {
   };
 
   const getRecipes = () => {
+    let localIngredients = [...ingredients];
     console.log("to do:  get recipes from api");
-  }
+    const ENDPOINT = "https://api.spoonacular.com/recipes/";
+    const RECIPES_COUNT = 3;
+    // const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
+    const API_KEY = "9dcdb30197a14d4c973b4501f5bb3c7d";
+
+    const joiner = ",+";
+
+    let query1 = `${ENDPOINT}findByIngredients`; 
+
+    // let j = 0;
+    let allIngredients = ingredients.join(joiner);
+
+    // console.log(localIngredients);
+
+    // let tempIngredientString = localIngredients[0];
+
+    // for(let j=1;j<(localIngredients.length - 1); j++){
+    //   tempIngredientString = tempIngredientString + joiner + localIngredients[j];
+    // }
+
+    // let allIngredients = tempIngredientString;
+
+    console.log(allIngredients);
+
+    let ingredientString = allIngredients + "&number=" + RECIPES_COUNT;
+
+    let ingredientQuery = `${query1}?ingredients=${ingredientString}&apiKey=${API_KEY}`;
+
+
+    // fetch recipes
+    fetch(ingredientQuery)
+    .then(res => res.json())
+    .then(recipes => {
+        // work with data returned from API in this block
+        console.log(recipes);
+        //cards container
+        // let cards = document.getElementById("cards-container").getElementsByClassName("recipe");
+ 
+        let i = 0;
+
+        // let tempRecipesId = []
+
+        for (let recipe of recipes){
+
+          console.log(recipe);
+            // working on each individual recipe card
+
+            // tempRecipesId.push(recipe.id);
+            
+            // title: recipe.title
+            // image: recipe.image
+            // ingredients: 1. ingredients not requested(missing) recipe.missedIngredients - loop thru => recipe.missedIngredients[n].name
+            //ingredients: 2. ingredients requested(in request by user) recipe.usedIngredients - loop thru => recipe.usedIngredients[n].name
+            //instructions: recipe.id will be used to get {RecipeID} to use in query 2
+            // 
+
+            // cards[i].getElementsByClassName("card-title")[0].innerText = recipe.title;
+            // cards[i].getElementsByClassName("card-img-top")[0].src = recipe.image;
+
+            // let listContainer = cards[i].getElementsByClassName("list-group")[0];
+
+            // loop one - add ingredients requested to ul
+ 
+            // for (let usedIngredient of recipe.usedIngredients) {
+
+            //     addList("<strong>" + usedIngredient.name + "</strong>", listContainer);
+            // }           
+
+            // loop two - add ingredients not requested to ul
+
+            // for (let missedIngredient of recipe.missedIngredients) {
+
+            //     addList(missedIngredient.name, listContainer);
+            // }
+
+            i++;     
+        }
+
+        // return tempRecipesId;
+    })
+  };
 
   return (
     <>
