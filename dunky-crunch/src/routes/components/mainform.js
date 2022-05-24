@@ -31,6 +31,7 @@ function FormIngredient({ addIngredient, getRecipes }) {
 
   return (
     <>
+
       <Form onSubmit={handleSubmit}>
         <Form.Group className="d-flex justify-content-center mb-2">
 
@@ -160,7 +161,7 @@ function MainForm() {
   return (
     <>
       <div className="mainform">
-        <h1 className="text-center mb-4">Ingredients</h1>
+        <h2 className="text-center mb-4">Ingredients</h2>
 
         <div className="mb-4">
           {ingredients.map((ingredient, index) => (
