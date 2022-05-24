@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Ingredient({ ingredient, index, removeIngredient }) {
@@ -56,8 +58,9 @@ function FormIngredient({ addIngredient, getRecipes }) {
   );
 }
 
-function MainForm() {
+function MainForm({ setApiQuery }) {
   const [ingredients, setIngredients] = useState([]);
+  let navigate = useNavigate();
 
   const addIngredient = (text) => {
     const newIngredients = [...ingredients, text];
@@ -70,6 +73,7 @@ function MainForm() {
     newIngredients.splice(index, 1);
     setIngredients(newIngredients);
   };
+
 
   const getRecipes = () => {
     let localIngredients = [...ingredients];
@@ -104,8 +108,9 @@ function MainForm() {
 
     console.log(ingredientQuery);
 
-    // setApiQuery(ingredientQuery);
+    setApiQuery(ingredientQuery);
 
+    navigate("/ingredients", {replace: true});
     // // fetch recipes
     // fetch(ingredientQuery)
     // .then(res => res.json())
@@ -179,6 +184,7 @@ function MainForm() {
           ))}
         </div>
         <FormIngredient addIngredient={addIngredient} getRecipes={getRecipes}/>
+      
       </div>
     </>
   );

@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavRecipe from "./components/navrecipe";
 import RecipeCards from "./components/recipecards";
-// import { useContext } from "react";
-// import { QueryContext } from "./../QueryContext";
+import { useContext } from "react";
+import { QueryContext } from "./../QueryContext";
 
 function Ingredients() {
 
   const [recipesObject, setRecipesObject] = useState({});
-  // const { apiQuery } = useContext(QueryContext);
+  const { apiQuery } = useContext(QueryContext);
   let ingredientQuery = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=cheese,+pork&number=3&apiKey=9dcdb30197a14d4c973b4501f5bb3c7d";
-  // let ingredientQuery=apiQuery;
+  let ingredientQuery2=apiQuery;
+
+  console.log("ingredients query: " + ingredientQuery2);
 
   useEffect(() => {
     // fetch recipes
-    fetch(ingredientQuery)
+    fetch(ingredientQuery2)
       .then((res) => res.json())
       .then((recipes) => {
         // work with data returned from API in this block
