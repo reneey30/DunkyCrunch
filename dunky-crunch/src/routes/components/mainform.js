@@ -33,7 +33,7 @@ function FormIngredient({ addIngredient, getRecipes }) {
     <>
 
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="d-flex justify-content-center mb-2">
+        <Form.Group className="d-flex justify-content-center mb-3">
 
             <Form.Control
               type="text"
@@ -56,7 +56,7 @@ function FormIngredient({ addIngredient, getRecipes }) {
   );
 }
 
-function MainForm() {
+function MainForm({setApiQuery}) {
   const [ingredients, setIngredients] = useState([]);
 
   const addIngredient = (text) => {
@@ -104,6 +104,7 @@ function MainForm() {
 
     console.log(ingredientQuery);
 
+    setApiQuery(ingredientQuery);
 
     // // fetch recipes
     // fetch(ingredientQuery)

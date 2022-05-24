@@ -1,24 +1,25 @@
-// import { Link } from "react-router-dom";
-import './App.css';
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { useState } from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 // import NavMain from "./routes/components/navmain";
 // import MainForm from "./routes/components/mainform";
 import Landing from "./routes/landing";
 import Ingredients from "./routes/ingredients";
 import Search from "./routes/search";
-
-
-
+import { QueryContext } from "./QueryContext";
 
 function App() {
+  const [apiQuery, setApiQuery] = useState("");
+
+  // const providerValue = { apiQuery, setApiQuery };
+
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="ingredients" element={<Ingredients />} />
-      <Route path="search" element={<Search />} />
+      <QueryContext.Provider value={{apiQuery, setApiQuery}}>
+        <Route path="/" element={<Landing />} />
+        <Route path="ingredients" element={<Ingredients />} />
+        <Route path="search" element={<Search />} />
+      </QueryContext.Provider>
     </Routes>
     // <div>
     //   <nav
