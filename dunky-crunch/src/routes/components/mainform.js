@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Ingredient({ ingredient, index, removeIngredient }) {

@@ -67,18 +67,15 @@ function Ingredients() {
 
         // return tempRecipesId;
       });
-  },[ingredientQuery]);
+  },[]);
 
   return (
     <div>
       <Link to="/">Back to Starting Page</Link>
       <p>Searched by Ingredients page</p>
-      <p> {JSON.stringify(recipesObject)}</p>
+      {/* <p> {JSON.stringify(recipesObject)}</p> */}
       <NavRecipe />
-      {/* for (let recipe of recipes) {
-          <RecipeCards title={recipe.title} imageSrc={recipe.imageSrc}/>
-      } */}
-      <RecipeCards />
+      <RecipeCards recipes={recipesObject}/>
     </div>
   );
 }
