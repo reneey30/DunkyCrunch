@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavRecipe from "./components/navrecipe";
 import RecipeCards from "./components/recipecards";
+// import { useContext } from "react";
+// import { QueryContext } from "./../QueryContext";
 
 function Ingredients() {
 
   const [recipesObject, setRecipesObject] = useState({});
-
+  // const { apiQuery } = useContext(QueryContext);
   let ingredientQuery = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=cheese,+pork&number=3&apiKey=9dcdb30197a14d4c973b4501f5bb3c7d";
+  // let ingredientQuery=apiQuery;
 
   useEffect(() => {
     // fetch recipes

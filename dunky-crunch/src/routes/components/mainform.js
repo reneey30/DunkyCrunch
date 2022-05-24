@@ -56,7 +56,7 @@ function FormIngredient({ addIngredient, getRecipes }) {
   );
 }
 
-function MainForm({setApiQuery}) {
+function MainForm() {
   const [ingredients, setIngredients] = useState([]);
 
   const addIngredient = (text) => {
@@ -104,7 +104,7 @@ function MainForm({setApiQuery}) {
 
     console.log(ingredientQuery);
 
-    setApiQuery(ingredientQuery);
+    // setApiQuery(ingredientQuery);
 
     // // fetch recipes
     // fetch(ingredientQuery)

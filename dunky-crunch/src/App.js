@@ -9,18 +9,27 @@ import Search from "./routes/search";
 import { QueryContext } from "./QueryContext";
 
 function App() {
-  const [apiQuery, setApiQuery] = useState("");
+  const [apiQuery, setApiQuery] = useState(null);
 
-  // const providerValue = { apiQuery, setApiQuery };
+  const providerValue = { apiQuery, setApiQuery };
 
   return (
-    <Routes>
-      <QueryContext.Provider value={{apiQuery, setApiQuery}}>
+    <QueryContext.Provider value={providerValue}>
+      <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="ingredients" element={<Ingredients />} />
         <Route path="search" element={<Search />} />
-      </QueryContext.Provider>
-    </Routes>
+      </Routes>
+    </QueryContext.Provider>
+
+    // {/* <Routes>
+
+    //   <Route path="/" element={<Landing />} />
+    //   <Route path="ingredients" element={<Ingredients />} />
+    //   <Route path="search" element={<Search />} />
+
+    // </Routes> */}
+
     // <div>
     //   <nav
     //     style={{
