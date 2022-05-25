@@ -7,18 +7,22 @@ import Details from "./components/details";
 function Search() {
 
   const [ingredientsList, setIngredientsList ] = useState({});
-  const { apiQuery } = useContext(QueryContext);
+  const { searchParams } = useContext(QueryContext);
 
   const ENDPOINT = "https://api.spoonacular.com/recipes/";
   const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
+
+  let params = searchParams;
   
   let recipeId = 661447;
   let recipeTitle = "Square Deviled Eggs";
   let recipeImage = "https://spoonacular.com/recipeImages/661447-312x231.jpg";
 
+  // let {recipeId, recipeTitle, recipeImage} = params;
+
   let queryString = `${ENDPOINT}${recipeId}/ingredientWidget.json?apiKey=${API_KEY}`
 
-  console.log("querystring: " + queryString);
+  console.log("querystring + params: " + queryString + " : " + params);
 
   useEffect(() => {
     // fetch ingredients

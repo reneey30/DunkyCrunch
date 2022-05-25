@@ -20,9 +20,13 @@ function RecipeCards({ recipes, setSearchParams }) {
                 </p>
                 <p className="text-center text-white">Likes: {likes}</p>
                 <Button
-                  onClick={() =>
-                    console.log({ id: id, title: title, image: image })
-                  }
+                  onClick={() => {
+                    
+                    let params = { recipeId: id, recipeTitle: title, recipeImage: image };
+                    console.log(params);
+                    setSearchParams(params);
+
+                  }}
                 >
                   Ingredients details
                 </Button>
