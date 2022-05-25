@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import NavRecipe from "./components/navrecipe";
 import Details from "./components/details";
 import RecipeImage from "./components/recipeimage";
