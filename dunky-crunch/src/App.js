@@ -10,11 +10,12 @@ import { QueryContext } from "./QueryContext";
 
 function App() {
   const [apiQuery, setApiQuery] = useState(null);
+  const [searchParams, setSearchParams] = useState(null);
 
   // const providerValue = { apiQuery, setApiQuery };
 
   return (
-    <QueryContext.Provider value={{apiQuery, setApiQuery}}>
+    <QueryContext.Provider value={{apiQuery, setApiQuery, searchParams, setSearchParams}}>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="ingredients" element={<Ingredients />} />

@@ -8,15 +8,15 @@ import { QueryContext } from "./../QueryContext";
 function Ingredients() {
 
   const [recipesObject, setRecipesObject] = useState({});
-  const { apiQuery } = useContext(QueryContext);
+  const { apiQuery, setSearchParams } = useContext(QueryContext);
   // let ingredientQuery = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=cheese,+pork&number=3&apiKey=9dcdb30197a14d4c973b4501f5bb3c7d";
-  let ingredientQuery2=apiQuery;
+  let ingredientQuery=apiQuery;
 
-  console.log("ingredients query: " + ingredientQuery2);
+  console.log("ingredients query: " + ingredientQuery);
 
   useEffect(() => {
     // fetch recipes
-    fetch(ingredientQuery2)
+    fetch(ingredientQuery)
       .then((res) => res.json())
       .then((recipes) => {
         // work with data returned from API in this block
@@ -30,8 +30,8 @@ function Ingredients() {
 
         setRecipesObject(recipes);
 
-        for (let recipe of recipes) {
-          console.log(recipe);
+        // for (let recipe of recipes) {
+        //   console.log(recipe);
           // working on each individual recipe card
 
           // tempRecipesId.push(recipe.id);
@@ -63,11 +63,11 @@ function Ingredients() {
           // }
 
           // i++;
-        }
+        // }
 
         // return tempRecipesId;
       });
-  },[]);
+  },[ingredientQuery]);
 
   return (
     <div className="container">
@@ -75,7 +75,7 @@ function Ingredients() {
       <p>Searched by Ingredients page</p> */}
       {/* <p> {JSON.stringify(recipesObject)}</p> */}
       <NavRecipe />
-      <RecipeCards recipes={recipesObject}/>
+      <RecipeCards recipes={recipesObject} setSearchParams={setSearchParams}/>
     </div>
   );
 }

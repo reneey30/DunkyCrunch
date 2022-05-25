@@ -1,14 +1,16 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./../../App.css";
 
-function RecipeCards({ recipes }) {
+function RecipeCards({ recipes, setSearchParams }) {
   return (
     <div className="m-5">
       <div className="d-flex justify-content-evenly">
         {recipes.length ? (
-          recipes.map(({ title, likes, image }, index) => (
+          recipes.map(({ id, title, likes, image }, index) => (
             <div
+              key={index}
               className="recipe-card"
               style={{ backgroundImage: "url(" + image + ")" }}
             >
@@ -17,6 +19,13 @@ function RecipeCards({ recipes }) {
                   <strong>{title}</strong>
                 </p>
                 <p className="text-center text-white">Likes: {likes}</p>
+                <Button
+                  onClick={() =>
+                    console.log({ id: id, title: title, image: image })
+                  }
+                >
+                  Ingredients details
+                </Button>
               </div>
             </div>
           ))
