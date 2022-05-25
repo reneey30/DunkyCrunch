@@ -7,9 +7,9 @@ import RecipeImage from "./components/recipeimage";
 
 function Search() {
     return (
-      <div>
-        <Link to="/">Back to Starting Page</Link>
-        <p>Searched by recipe page</p>
+      <div className="container">
+        {/* <Link to="/">Back to Starting Page</Link>
+        <p>Searched by recipe page</p> */}
         <NavRecipe />
         <Details />
         <RecipeImage />

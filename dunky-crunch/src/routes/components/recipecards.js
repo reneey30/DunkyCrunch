@@ -1,21 +1,20 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./../../App.css";
 
 function RecipeCards({ recipes }) {
   
   return (
     <>
-      <div className="mb-2">
+    
+      <div className="d-flex justify-content-around">
         {recipes.length ? (
-          recipes.map((recipe, index) => (
-            <Card>
-              <Card.Body>
-                  <Card.Header>{recipe.title}</Card.Header>
-                  <Card.Title>{recipe.likes}</Card.Title>
-                  <img src={recipe.image}></img>
-            </Card.Body>
-            </Card>
+          recipes.map(({title,likes,image}, index) => (
+
+            <div className="recipe-card" style={{backgroundImage: "url(" + image + ")"}}>
+                <p><strong>{title}</strong></p>
+                <p>Likes: {likes}</p>
+            </div>
           ))
         ) : (
           <p>No recipes found...</p>
