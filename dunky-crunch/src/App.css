@@ -50,3 +50,16 @@ nav{
   background-color: rgba(0, 0, 0, 0.153); 
   padding: 16px;
 }
+.single-recipe {
+  width: 700px;
+  background-color: rgba( 255, 255, 255, 0.15);
+  margin-top: 16px;
+  padding: 4px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+.single-recipe-image {
+  width: 312px;
+  height: 231px;
+  border-radius: 30%;
+}

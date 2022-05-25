@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+// import { Link } from "react-router-dom";
 import NavRecipe from "./components/navrecipe";
 import RecipeCards from "./components/recipecards";
-import { useContext } from "react";
 import { QueryContext } from "./../QueryContext";
 
 
