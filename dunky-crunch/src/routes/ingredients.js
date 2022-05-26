@@ -9,7 +9,7 @@ import {RecipeIdContext} from "./../RecipeIdContext";
 function Ingredients() {
 
   const [recipesObject, setRecipesObject] = useState({});
-  const { apiQuery } = useContext(QueryContext);
+  const { apiQuery, isLoggedIn, setIsLoggedIn  } = useContext(QueryContext);
   const { setSearchParams } = useContext(RecipeIdContext);
   // let ingredientQuery = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=cheese,+pork&number=3&apiKey=9dcdb30197a14d4c973b4501f5bb3c7d";
   let ingredientQuery=apiQuery;
@@ -76,7 +76,7 @@ function Ingredients() {
       {/* <Link to="/">Back to Starting Page</Link>
       <p>Searched by Ingredients page</p> */}
       {/* <p> {JSON.stringify(recipesObject)}</p> */}
-      <NavRecipe />
+      <NavRecipe isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <RecipeCards recipes={recipesObject} setSearchParams={setSearchParams}/>
     </div>
   );

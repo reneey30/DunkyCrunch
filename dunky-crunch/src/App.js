@@ -109,11 +109,12 @@ import "./App.css";
 function App() {
   const [apiQuery, setApiQuery] = useState(null);
   const [searchParams, setSearchParams] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // const providerValue = { apiQuery, setApiQuery };
 
   return (
-    <QueryContext.Provider value={{ apiQuery, setApiQuery }}>
+    <QueryContext.Provider value={{ apiQuery, setApiQuery, isLoggedIn, setIsLoggedIn }}>
       <RecipeIdContext.Provider value={{ searchParams, setSearchParams }}>
         <Routes>
           <Route path="/" element={<Landing />} />

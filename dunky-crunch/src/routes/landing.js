@@ -6,12 +6,12 @@ import { useContext } from "react";
 import { QueryContext } from "./../QueryContext";
 
 function Landing() {
-  const { setApiQuery } = useContext(QueryContext);
+  const { setApiQuery, isLoggedIn, setIsLoggedIn } = useContext(QueryContext);
 
   return (
     <>
       <div className="container">
-        <NavMain />
+        <NavMain isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <MainForm setApiQuery={setApiQuery}/>
       </div>
     </>

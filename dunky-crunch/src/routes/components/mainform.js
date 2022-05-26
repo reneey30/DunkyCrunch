@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Ingredient({ ingredient, index, removeIngredient }) {
@@ -60,7 +60,8 @@ function FormIngredient({ addIngredient, getRecipes }) {
 function MainForm({ setApiQuery }) {
   const [ingredients, setIngredients] = useState([]);
   
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const addIngredient = (text) => {
     const newIngredients = [...ingredients, text];
@@ -78,6 +79,7 @@ function MainForm({ setApiQuery }) {
   const getRecipes = () => {
     let localIngredients = [...ingredients];
     console.log("to do:  get recipes from api");
+    console.log(location.pathname);
     const ENDPOINT = "https://api.spoonacular.com/recipes/";
     const RECIPES_COUNT = 3;
     // const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";

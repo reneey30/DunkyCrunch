@@ -1,4 +1,5 @@
 import { RecipeIdContext } from "../RecipeIdContext";
+import { QueryContext } from "./../QueryContext";
 import React, { useEffect, useState, useContext } from "react";
 import NavRecipe from "./components/navrecipe";
 import Details from "./components/details";
@@ -7,6 +8,7 @@ import Details from "./components/details";
 function Search() {
 
   const [ingredientsList, setIngredientsList ] = useState({});
+  const { isLoggedIn, setIsLoggedIn  } = useContext(QueryContext);
   const { searchParams } = useContext(RecipeIdContext);
 
   const ENDPOINT = "https://api.spoonacular.com/recipes/";
@@ -40,7 +42,7 @@ function Search() {
       <div className="container">
         {/* <Link to="/">Back to Starting Page</Link>
         <p>Searched by recipe page</p> */}
-        <NavRecipe />
+        <NavRecipe isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Details recipeTitle={recipeTitle} recipeImage={recipeImage} ingredientsList={ingredientsList}/>
       </div>
     );
