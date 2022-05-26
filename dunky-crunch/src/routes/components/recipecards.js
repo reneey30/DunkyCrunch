@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./../../App.css";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function RecipeCards({ recipes, setSearchParams }) {
   let navigate = useNavigate();
