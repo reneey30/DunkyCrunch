@@ -33,9 +33,9 @@ function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
 
     searchFunction(searchQuery)
 
-    // setApiQuery(searchQuery);
+    setApiQuery(searchQuery);
 
-    // navigate("/ingredients", { replace: true });
+    navigate("/ingredients", { replace: true });
 
     // setValue("");
   };
@@ -46,7 +46,7 @@ function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
       .then((recipesList) => {
         console.log("recipes from search bar: ");
         console.log(recipesList);
-        console.log(recipesList.results[0].title);
+        console.log(recipesList.results[0]);
       });
   };
 

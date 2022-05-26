@@ -11,7 +11,7 @@ function RecipeCards({ recipes, setSearchParams }) {
     <div className="m-5">
       <div className="d-flex justify-content-evenly">
         {recipes.length ? (
-          recipes.map(({ id, title, likes, image }, index) => (
+          recipes.map(({ id, title, image }, index) => (
             <div
               onClick={() => {
                     
@@ -29,7 +29,7 @@ function RecipeCards({ recipes, setSearchParams }) {
                 <p className="text-center text-white">
                   <strong>{title}</strong>
                 </p>
-                <p className="text-center text-white">Likes: {likes}</p>
+                <p className="text-center text-white">Click for details...</p>
               
               </div>
             </div>
