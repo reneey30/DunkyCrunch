@@ -2,14 +2,25 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./../../App.css";
+import { useNavigate } from "react-router-dom"
 
 function RecipeCards({ recipes, setSearchParams }) {
+  let navigate = useNavigate();
+
   return (
     <div className="m-5">
       <div className="d-flex justify-content-evenly">
         {recipes.length ? (
           recipes.map(({ id, title, likes, image }, index) => (
             <div
+              onClick={() => {
+                    
+                let params = { recipeId: id, recipeTitle: title, recipeImage: image };
+                console.log(params);
+                setSearchParams(params);
+                navigate("/search", {replace: true});
+
+              }}
               key={index}
               className="recipe-card"
               style={{ backgroundImage: "url(" + image + ")" }}
@@ -19,17 +30,7 @@ function RecipeCards({ recipes, setSearchParams }) {
                   <strong>{title}</strong>
                 </p>
                 <p className="text-center text-white">Likes: {likes}</p>
-                <Button
-                  onClick={() => {
-                    
-                    let params = { recipeId: id, recipeTitle: title, recipeImage: image };
-                    console.log(params);
-                    setSearchParams(params);
-
-                  }}
-                >
-                  Ingredients details
-                </Button>
+              
               </div>
             </div>
           ))

@@ -18,7 +18,9 @@ function NavMain() {
               </div>
               <div className="d-flex justify-content-end">
                   <h2>search</h2>
+                  
               </div>
+            
             {/* </div> */}
           </div>
         </nav>

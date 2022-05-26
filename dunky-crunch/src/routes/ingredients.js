@@ -3,12 +3,14 @@ import React, { useEffect, useState, useContext } from "react";
 import NavRecipe from "./components/navrecipe";
 import RecipeCards from "./components/recipecards";
 import { QueryContext } from "./../QueryContext";
+import {RecipeIdContext} from "./../RecipeIdContext";
 
 
 function Ingredients() {
 
   const [recipesObject, setRecipesObject] = useState({});
-  const { apiQuery, setSearchParams } = useContext(QueryContext);
+  const { apiQuery } = useContext(QueryContext);
+  const { setSearchParams } = useContext(RecipeIdContext);
   // let ingredientQuery = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=cheese,+pork&number=3&apiKey=9dcdb30197a14d4c973b4501f5bb3c7d";
   let ingredientQuery=apiQuery;
 

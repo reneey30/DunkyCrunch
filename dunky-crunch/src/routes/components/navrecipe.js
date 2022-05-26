@@ -18,7 +18,9 @@ function NavRecipe() {
                 </h1>
               </div>
               <div className="d-flex justify-content-end">
-              <Link to="/">Back to Starting Page</Link>
+              <Link to="/" className="m-2">#</Link>
+              <Link to="/search">Search</Link>
+              <Link to="/ingredients" className="m-2">Ingredients</Link>
               </div>
             {/* </div> */}
           </div>

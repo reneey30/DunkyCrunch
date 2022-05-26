@@ -6,7 +6,7 @@ function SingleIngredient({ title, amount, unit }) {
   return (
     <li>
       <div className="d-flex">
-        <div className="px-2"> {title} : </div>
+        <div className="px-2 text-capitalize"> {title} : </div>
         <div className="px-1"> {amount}</div>
         <div>{unit}</div>
       </div>
@@ -19,12 +19,12 @@ function Details({ recipeTitle, recipeImage, ingredientsList }) {
 
   console.log("ingredients type: ");
   console.log(ingredients);
-  let a = () =>
-    ingredients !== undefined
-      ? console.log(ingredients[0].amount.metric.unit)
-      : console.log("no ingredients");
+  // let a = () =>
+  //   ingredients !== undefined
+  //     ? console.log(ingredients[0].amount.metric.unit)
+  //     : console.log("no ingredients");
 
-  a();
+  // a();
 
   return (
     <div className="mx-auto single-recipe">
@@ -44,7 +44,7 @@ function Details({ recipeTitle, recipeImage, ingredientsList }) {
                 />
               ))
             ) : (
-              <li>No ingredients found...</li>
+              <p>No ingredients found...</p>
             )}
           </ol>
           {/* < SingleIngredient title="Broccoli" amount="182.0" unit="g"/> */}

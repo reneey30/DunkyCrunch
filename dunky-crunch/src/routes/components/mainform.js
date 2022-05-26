@@ -59,6 +59,7 @@ function FormIngredient({ addIngredient, getRecipes }) {
 
 function MainForm({ setApiQuery }) {
   const [ingredients, setIngredients] = useState([]);
+  
   let navigate = useNavigate();
 
   const addIngredient = (text) => {
