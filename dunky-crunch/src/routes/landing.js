@@ -11,7 +11,7 @@ function Landing() {
   return (
     <>
       <div className="container">
-        <NavMain isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <NavMain isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setApiQuery={setApiQuery}/>
         <MainForm setApiQuery={setApiQuery}/>
       </div>
     </>

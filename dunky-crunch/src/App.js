@@ -26,6 +26,8 @@ import "./App.css";
 
 //   const [user, setUser] = useState({});
 
+    // console.log(auth);
+
 //   onAuthStateChanged(auth, (currentUser) => {
 //     setUser(currentUser);
 //   });

@@ -82,8 +82,8 @@ function MainForm({ setApiQuery }) {
     console.log(location.pathname);
     const ENDPOINT = "https://api.spoonacular.com/recipes/";
     const RECIPES_COUNT = 3;
-    // const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
-    const API_KEY = "9dcdb30197a14d4c973b4501f5bb3c7d";
+    const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
+    // const API_KEY = "9dcdb30197a14d4c973b4501f5bb3c7d";
 
     const joiner = ",+";
 
