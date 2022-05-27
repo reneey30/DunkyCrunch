@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import { QueryContext } from "./../QueryContext";
 
 function Landing() {
+  
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
@@ -72,6 +73,10 @@ function Landing() {
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
           setApiQuery={setApiQuery}
+          signOut={signOut}
+          auth={auth}
+          createUserWithEmailAndPassword={createUserWithEmailAndPassword}
+          signInWithEmailAndPassword={signInWithEmailAndPassword}
         />
         <MainForm setApiQuery={setApiQuery} />
 

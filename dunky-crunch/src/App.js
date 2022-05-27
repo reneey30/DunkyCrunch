@@ -112,14 +112,14 @@ import "./App.css";
 function App() {
   const [apiQuery, setApiQuery] = useState(null);
   const [searchParams, setSearchParams] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  // const [registerEmail, setRegisterEmail] = useState("");
+  // const [registerPassword, setRegisterPassword] = useState("");
+  // const [loginEmail, setLoginEmail] = useState("");
+  // const [loginPassword, setLoginPassword] = useState("");
 
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   
   // console.log("auth object: ");
   // console.log(auth);

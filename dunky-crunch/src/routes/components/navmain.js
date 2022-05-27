@@ -1,13 +1,64 @@
 import React from "react";
+import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
+function NavMain({
+  isLoggedIn,
+  setIsLoggedIn,
+  setApiQuery,
+  signOut,
+  auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+}) {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  // const [user, setUser] = useState({});
+
+  const register = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+      setIsLoggedIn(true);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleCloseR = () => setShowRegister(false);
+  const handleShowR = () => setShowRegister(true);
+
+  const handleCloseL = () => setShowLogin(false);
+  const handleShowL = () => setShowLogin(true);
 
   const handleSearch = (e) => {
     const ENDPOINT = "https://api.spoonacular.com/recipes/";
@@ -31,7 +82,7 @@ function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
 
     console.log("search for: " + value);
 
-    searchFunction(searchQuery)
+    // searchFunction(searchQuery);
 
     setApiQuery(searchQuery);
 
@@ -40,15 +91,20 @@ function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
     // setValue("");
   };
 
-  const searchFunction = (searchQuery) => {
-    fetch(searchQuery)
-      .then((res) => res.json())
-      .then((recipesList) => {
-        console.log("recipes from search bar: ");
-        console.log(recipesList);
-        console.log(recipesList.results[0]);
-      });
+  const logout = async () => {
+    await signOut(auth);
+    setIsLoggedIn(false);
   };
+
+  // const searchFunction = (searchQuery) => {
+  //   fetch(searchQuery)
+  //     .then((res) => res.json())
+  //     .then((recipesList) => {
+  //       console.log("recipes from search bar: ");
+  //       console.log(recipesList);
+  //       console.log(recipesList.results[0]);
+  //     });
+  // };
 
   // let searchQuery = "https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=3&apiKey=e74950d89dbe4c6a9349da28a66873bd";
 
@@ -83,25 +139,105 @@ function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
             {/* </div> */}
             <div>
               {isLoggedIn ? (
-                <button
-                  className="btn btn-light mx-2"
-                  onClick={() => {
-                    setIsLoggedIn(false);
-                  }}
-                >
+                <button className="btn btn-light mx-2" onClick={logout}>
                   logout
                 </button>
               ) : (
-                <button
-                  className="btn btn-light mx-2"
-                  onClick={() => {
-                    setIsLoggedIn(true);
-                  }}
-                >
-                  login
-                </button>
+                <div>
+                  <button
+                    className="btn btn-light mx-2"
+                    onClick={handleShowL}
+                
+                  >
+                    Login
+                  </button>
+                  <button
+                    className="btn btn-light mx-2"
+                    onClick={handleShowR}
+                  >
+                    Register
+                  </button>
+                </div>
               )}
             </div>
+
+            {/* Register modal */}
+
+            {/* <Button variant="primary" onClick={handleShowR}>
+              Register
+            </Button> */}
+
+            <Modal show={showRegister} onHide={handleCloseR}>
+              <Modal.Header closeButton>
+                <Modal.Title>Register with Email and Password</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div>
+                  <h3> Register User </h3>
+                  <input
+                    placeholder="Email..."
+                    onChange={(event) => {
+                      setRegisterEmail(event.target.value);
+                    }}
+                  />
+                  <input
+                    placeholder="Password..."
+                    onChange={(event) => {
+                      setRegisterPassword(event.target.value);
+                    }}
+                  />
+
+                  <button onClick={register}> Create User</button>
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseR}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleCloseR}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
+
+            {/* login modal*/}
+
+            {/* <Button variant="primary" onClick={handleShowL}>
+              Sign In
+            </Button> */}
+
+            <Modal show={showLogin} onHide={handleCloseL}>
+              <Modal.Header closeButton>
+                <Modal.Title>Sign In with Email and Password</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div>
+                  <h3> Login </h3>
+                  <input
+                    placeholder="Email..."
+                    onChange={(event) => {
+                      setLoginEmail(event.target.value);
+                    }}
+                  />
+                  <input
+                    placeholder="Password..."
+                    onChange={(event) => {
+                      setLoginPassword(event.target.value);
+                    }}
+                  />
+
+                  <button onClick={login}> Login</button>
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseL}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleCloseL}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
 
           {/* </div> */}

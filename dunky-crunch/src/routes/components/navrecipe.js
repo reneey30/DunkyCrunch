@@ -40,7 +40,7 @@ function NavRecipe({ isLoggedIn, setIsLoggedIn }) {
           </div>
           <div className="d-flex justify-content-end">
             {isLoggedIn ? (
-              <button className="btn btn-light mx-2">logout</button>
+              <button className="btn btn-light mx-2" >logout</button>
             ) : (
               <div></div>
             )}
