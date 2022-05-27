@@ -58,7 +58,6 @@ import "./App.css";
   //     console.log(error.message);
   //   }
   // };
-
   // const logout = async () => {
   //   await signOut(auth);
   // };
