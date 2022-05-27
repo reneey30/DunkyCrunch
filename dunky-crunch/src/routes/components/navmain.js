@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function NavMain({
@@ -12,6 +12,7 @@ function NavMain({
   setApiQuery,
   signOut,
   auth,
+  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 }) {
@@ -25,7 +26,13 @@ function NavMain({
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  // const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
 
   const register = async () => {
     try {
@@ -35,6 +42,7 @@ function NavMain({
         registerPassword
       );
       console.log(user);
+      handleCloseR();
     } catch (error) {
       console.log(error.message);
     }
@@ -49,10 +57,21 @@ function NavMain({
       );
       console.log(user);
       setIsLoggedIn(true);
+      handleCloseL();
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  const registerHandler = (e) => {
+    e.preventDefault();
+    register();
+  }
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    login();
+  }
 
   const handleCloseR = () => setShowRegister(false);
   const handleShowR = () => setShowRegister(true);
@@ -66,7 +85,7 @@ function NavMain({
     const API_KEY = "e74950d89dbe4c6a9349da28a66873bd";
     // const API_KEY = "9dcdb30197a14d4c973b4501f5bb3c7d";
 
-    // e.preventDefault();
+    e.preventDefault();
     if (!value) return;
 
     let searchQuery =
@@ -122,39 +141,43 @@ function NavMain({
               DunkyCrunch!
             </h1>
           </div>
+
           <div className="d-flex justify-content-end">
             {/* <div className="d-flex justify-content-center"> */}
-            <div className="searchbar d-flex justify-content-between mx-2">
-              <input
-                className="search_input"
-                type="text"
-                name="search"
-                placeholder="Search recipes..."
-                onChange={(e) => setValue(e.target.value)}
-              ></input>
-              <span className="search_icon">
-                <FontAwesomeIcon icon={faSearch} onClick={handleSearch} />
-              </span>
-            </div>
+            <form onSubmit={handleSearch}>
+              <div className="searchbar d-flex justify-content-between mx-2">
+                <input
+                  className="search_input"
+                  type="text"
+                  name="search"
+                  placeholder="Search recipes..."
+                  onChange={(e) => setValue(e.target.value)}
+                ></input>
+                <button
+                  className="search_icon search-button"
+                  type="submit"
+                  id="search-recipe"
+                >
+                  <span><FontAwesomeIcon icon={faSearch} /></span>
+                </button>
+              </div>
+            </form>
             {/* </div> */}
             <div>
-              {isLoggedIn ? (
-                <button className="btn btn-light mx-2" onClick={logout}>
-                  logout
-                </button>
+              {user ? (
+                <div className="d-flex justify-content-between">
+                  <div>User: {user ? user.email : "Not Logged In"}</div>
+
+                  <button className="btn btn-light mx-2" onClick={logout}>
+                    logout
+                  </button>
+                </div>
               ) : (
                 <div>
-                  <button
-                    className="btn btn-light mx-2"
-                    onClick={handleShowL}
-                
-                  >
+                  <button className="btn btn-light mx-2" onClick={handleShowL}>
                     Login
                   </button>
-                  <button
-                    className="btn btn-light mx-2"
-                    onClick={handleShowR}
-                  >
+                  <button className="btn btn-light mx-2" onClick={handleShowR}>
                     Register
                   </button>
                 </div>
@@ -172,32 +195,35 @@ function NavMain({
                 <Modal.Title>Register with Email and Password</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div>
+                <form onSubmit={registerHandler}>
                   <h3> Register User </h3>
                   <input
+                    type="email"
                     placeholder="Email..."
+                    className="form-control mb-2"
                     onChange={(event) => {
                       setRegisterEmail(event.target.value);
                     }}
                   />
                   <input
+                    type="password"
                     placeholder="Password..."
+                    className="form-control mb-2"
                     onChange={(event) => {
                       setRegisterPassword(event.target.value);
                     }}
                   />
+                  <button
+                    type="submit"
+                    className="btn btn-outline-dark mb-2"
+                  >
+                    Create User
+                  </button>
 
-                  <button onClick={register}> Create User</button>
-                </div>
+                  {/* <button type="submit"> Create User 2</button> */}
+                </form>
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseR}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleCloseR}>
-                  Save Changes
-                </Button>
-              </Modal.Footer>
+              
             </Modal>
 
             {/* login modal*/}
@@ -211,32 +237,42 @@ function NavMain({
                 <Modal.Title>Sign In with Email and Password</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div>
+                <form onSubmit={loginHandler}>
                   <h3> Login </h3>
                   <input
+                    type="email"
                     placeholder="Email..."
+                    className="form-control mb-2"
                     onChange={(event) => {
                       setLoginEmail(event.target.value);
                     }}
                   />
                   <input
+                    type="password"
                     placeholder="Password..."
+                    className="form-control mb-2"
                     onChange={(event) => {
                       setLoginPassword(event.target.value);
                     }}
                   />
+                  <button
+                    type="submit"
+                    className="btn btn-outline-dark mb-2"
+                  >
+                    Sign In
+                  </button>
 
-                  <button onClick={login}> Login</button>
-                </div>
+                  {/* <button onClick={login}> Login</button> */}
+                </form>
               </Modal.Body>
-              <Modal.Footer>
+              {/* <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseL}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleCloseL}>
-                  Save Changes
+                <Button variant="primary" onClick={login}>
+                  Log In
                 </Button>
-              </Modal.Footer>
+              </Modal.Footer> */}
             </Modal>
           </div>
 
