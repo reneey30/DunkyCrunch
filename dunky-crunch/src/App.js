@@ -9,58 +9,59 @@ import Search from "./routes/search";
 import { QueryContext } from "./QueryContext";
 import { RecipeIdContext } from "./RecipeIdContext";
 
-// import {
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-//   onAuthStateChanged,
-//   signOut,
-// } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from "./firebase-config";
+
 import "./App.css";
-// import { auth } from "./firebase-config";
 
 // function App() {
-//   const [registerEmail, setRegisterEmail] = useState("");
-//   const [registerPassword, setRegisterPassword] = useState("");
-//   const [loginEmail, setLoginEmail] = useState("");
-//   const [loginPassword, setLoginPassword] = useState("");
+  // const [registerEmail, setRegisterEmail] = useState("");
+  // const [registerPassword, setRegisterPassword] = useState("");
+  // const [loginEmail, setLoginEmail] = useState("");
+  // const [loginPassword, setLoginPassword] = useState("");
 
-//   const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
 
-    // console.log(auth);
+  //   console.log(auth);
 
-//   onAuthStateChanged(auth, (currentUser) => {
-//     setUser(currentUser);
-//   });
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  // });
 
-//   const register = async () => {
-//     try {
-//       const user = await createUserWithEmailAndPassword(
-//         auth,
-//         registerEmail,
-//         registerPassword
-//       );
-//       console.log(user);
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
+  // const register = async () => {
+  //   try {
+  //     const user = await createUserWithEmailAndPassword(
+  //       auth,
+  //       registerEmail,
+  //       registerPassword
+  //     );
+  //     console.log(user);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
-//   const login = async () => {
-//     try {
-//       const user = await signInWithEmailAndPassword(
-//         auth,
-//         loginEmail,
-//         loginPassword
-//       );
-//       console.log(user);
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
+  // const login = async () => {
+  //   try {
+  //     const user = await signInWithEmailAndPassword(
+  //       auth,
+  //       loginEmail,
+  //       loginPassword
+  //     );
+  //     console.log(user);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
-//   const logout = async () => {
-//     await signOut(auth);
-//   };
+  // const logout = async () => {
+  //   await signOut(auth);
+  // };
 
 //   return (
 //     <div className="App">
@@ -113,10 +114,55 @@ function App() {
   const [searchParams, setSearchParams] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({});
+  
+  // console.log("auth object: ");
+  // console.log(auth);
+
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  // });
+
+  // const register = async () => {
+  //   try {
+  //     const user = await createUserWithEmailAndPassword(
+  //       auth,
+  //       registerEmail,
+  //       registerPassword
+  //     );
+  //     console.log(user);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  // const login = async () => {
+  //   try {
+  //     const user = await signInWithEmailAndPassword(
+  //       auth,
+  //       loginEmail,
+  //       loginPassword
+  //     );
+  //     console.log(user);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  // const logout = async () => {
+  //   await signOut(auth);
+  // };
+
+
   // const providerValue = { apiQuery, setApiQuery };
 
   return (
-    <QueryContext.Provider value={{ apiQuery, setApiQuery, isLoggedIn, setIsLoggedIn }}>
+    <QueryContext.Provider value={{ apiQuery, setApiQuery, isLoggedIn, setIsLoggedIn, createUserWithEmailAndPassword, signInWithEmailAndPassword, auth, onAuthStateChanged, signOut,}}>
       <RecipeIdContext.Provider value={{ searchParams, setSearchParams }}>
         <Routes>
           <Route path="/" element={<Landing />} />

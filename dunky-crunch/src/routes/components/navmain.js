@@ -68,7 +68,7 @@ function NavMain({ isLoggedIn, setIsLoggedIn, setApiQuery }) {
           </div>
           <div className="d-flex justify-content-end">
             {/* <div className="d-flex justify-content-center"> */}
-            <div className="searchbar d-flex justify-content-center mx-2">
+            <div className="searchbar d-flex justify-content-between mx-2">
               <input
                 className="search_input"
                 type="text"
