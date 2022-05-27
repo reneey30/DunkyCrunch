@@ -18,6 +18,7 @@ import {
 import { auth } from "./firebase-config";
 
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 
 // function App() {
   // const [registerEmail, setRegisterEmail] = useState("");
@@ -163,11 +164,13 @@ function App() {
   return (
     <QueryContext.Provider value={{ apiQuery, setApiQuery, isLoggedIn, setIsLoggedIn, createUserWithEmailAndPassword, signInWithEmailAndPassword, auth, onAuthStateChanged, signOut,}}>
       <RecipeIdContext.Provider value={{ searchParams, setSearchParams }}>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="ingredients" element={<Ingredients />} />
-          <Route path="search" element={<Search />} />
-        </Routes>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/ingredients" element={<Ingredients />} />
+            <Route path="/search" element={<Search />} />
+          </Routes>
+        </BrowserRouter>
       </RecipeIdContext.Provider>
     </QueryContext.Provider>
 
