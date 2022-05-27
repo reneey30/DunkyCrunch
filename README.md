@@ -1,18 +1,3 @@
-# DunkyCrunch #
-
-## Description ##
-Getting a good recipe online takes time especially making a decision on what to prepare when one is in a hurry. Having a way to get recipes based on ingredients come in handy in such a situation.
-
-This project will create a website that lists three choices of recipes based on ingredients the user provided. 
-This website will do so with the least amount of clicks and lesser time than searching for a recipe online. The website can also filter the recipes it provides based on parameters like calories, allergies,balanced diet among others.
-
-This website will essentially be an SPA that will take in a text input of ingredients the user has, and displays three recipes that contain the ingredient. It will use an API that takes in ingredient names and returns recipes. The API to be used is Spoonacular (https://api.spoonacluar.com)
-
-## Live link ##
-
-
-## Installation / Setup instruction: ##
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -54,14 +39,32 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Languages Used ##
-- HTML
-- CSS
-- BootStrap
-- JavaScript
+## Learn More
 
-## Contact Information: ##
-If you have any question or contributions, please email me at [irene.njeru@student.moringaschool.com]
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## License: ##
-Licence Copyright (c) 2022 Irene Wanjiku
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
