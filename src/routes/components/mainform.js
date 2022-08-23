@@ -169,7 +169,7 @@ function MainForm({ setApiQuery }) {
   return (
     <>
       <div className="mainform">
-        <h2 className="text-center mb-4">Ingredients</h2>
+        <h2 className="text-center mb-4">Choose your Ingredients</h2>
 
         <div className="mb-4">
           {ingredients.map((ingredient, index) => (
