@@ -4,6 +4,7 @@ import NavMain from "./components/navmain";
 import MainForm from "./components/mainform";
 import { useContext } from "react";
 import { QueryContext } from "./../QueryContext";
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 function Landing() {
   
@@ -83,6 +84,9 @@ function Landing() {
           signInWithEmailAndPassword={signInWithEmailAndPassword}
         />
         <MainForm setApiQuery={setApiQuery} />
+        <TawkMessengerReact
+                propertyId="6304fcd154f06e12d8904e69"
+                widgetId="1gb5nn5cl"/>
 
           {/* <h4> User Logged In: </h4>
       {user ? console.log("email: " + user.email + "; photoURL: "+ user.photoURL + "; user id: " + user.uid) : "Not Logged In"} */}
